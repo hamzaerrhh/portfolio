@@ -6,10 +6,8 @@ import PageContent from "./components/PageContent";
 function App() {
   return (
     <>
-      {/* <Loder /> */}
       <Header />
       <Avatar />
-      {/* <BG /> */}
 
       <PageContent />
     </>

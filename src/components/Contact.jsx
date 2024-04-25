@@ -1,7 +1,59 @@
+import { FaLinkedin, FaGithub, FaGithubSquare } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
+import { RiWhatsappFill } from "react-icons/ri";
+import { IoSend } from "react-icons/io5";
+import { useState } from "react";
+import axios from "axios";
+
 const Contact = () => {
+  const [err, setErr] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    company_name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  const handleSubmit = (e) => {
+    setErr("");
+    e.preventDefault();
+    if (formData.name === "") {
+      setErr("please whritr somthing in message");
+      return;
+    }
+    if (formData.name.length <= 3) {
+      setErr("please provide a regulare name");
+      return;
+    }
+
+    if (formData.message === "") {
+      setErr("please whritr somthing in message");
+      return;
+    }
+
+    try {
+      const response = axios.post(
+        "https://sheetdb.io/api/v1/r2co467u47mi0",
+        formData
+      );
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+    // You can access form data here via formData object
+    console.log(formData);
+    // Perform further actions like submitting the data to a backend API
+  };
+
   return (
     <>
-      {" "}
       <section id="contact" className="inner contact">
         {/* Content Block - H2 Section Title Start */}
         <div className="content__block section-title">
@@ -32,88 +84,72 @@ const Contact = () => {
         {/* Content Block - Contact Form Start */}
         <div className="content__block grid-block block-grid-large">
           <div className="form-container">
-            {/* Reply Messages Start */}
-            <div className="form__reply centered text-center">
-              <i className="ph-bold ph-smiley reply__icon" />
-              <p className="reply__title">Done!</p>
-              <span className="reply__text">
-                Thanks for your message. I'll get back as soon as possible.
-              </span>
-            </div>
-            {/* Reply Messages End */}
-            {/* Contact Form Start */}
-            <form className="form contact-form" id="contact-form">
-              {/* Hidden Required Fields */}
-              <input
-                type="hidden"
-                name="project_name"
-                defaultValue="Starter Template"
-              />
-              <input
-                type="hidden"
-                name="admin_email"
-                defaultValue="support@mixdesign.club"
-              />
-              <input
-                type="hidden"
-                name="form_subject"
-                defaultValue="Contact Form Message"
-              />
+            <h3> i will text u as soon as possible </h3>
+            <form className="form contact-form" onSubmit={handleSubmit}>
               {/* END Hidden Required Fields*/}
               <div className="container-fluid p-0">
                 <div className="row gx-0">
                   <div className="col-12 col-md-6 form__item animate-in-up">
                     <input
                       type="text"
-                      name="Name"
-                      placeholder="Your Name*"
-                      required=""
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Name"
+                      required={true}
                     />
                   </div>
                   <div className="col-12 col-md-6 form__item animate-in-up">
                     <input
                       type="text"
-                      name="Company"
+                      name="company_name"
+                      value={formData.company_name}
+                      onChange={handleChange}
                       placeholder="Company Name"
+                      required={true}
                     />
                   </div>
                   <div className="col-12 col-md-6 form__item animate-in-up">
                     <input
                       type="email"
-                      name="E-mail"
-                      placeholder="Email Adress*"
-                      required=""
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required={true}
+                      placeholder="Email"
                     />
                   </div>
                   <div className="col-12 col-md-6 form__item animate-in-up">
                     <input
-                      type="tel"
-                      name="Phone"
-                      placeholder="Phone Number*"
-                      required=""
+                      type="text"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="Phone"
+                      required={true}
                     />
                   </div>
                   <div className="col-12 form__item animate-in-up">
                     <textarea
-                      name="Message"
-                      placeholder="A Few Words*"
-                      required=""
-                      defaultValue={""}
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Message"
+                      required={true}
                     />
                   </div>
+                  {err && <p style={{ color: "red", margin: "2rem" }}>{err}</p>}
                   <div className="col-12 form__item animate-in-up">
                     <button
                       className="btn btn-default btn-hover btn-hover-accent"
                       type="submit"
                     >
                       <span className="btn-caption">Send Message</span>
-                      <i className="ph-bold ph-paper-plane-tilt" />
                     </button>
                   </div>
                 </div>
               </div>
             </form>
-            {/* Contact Form End */}
           </div>
         </div>
         {/* Content Block - Contact Form End */}
@@ -123,7 +159,9 @@ const Contact = () => {
             {/* socials item */}
             <div className="socials-cards__item d-flex grid-item-s animate-card-5">
               <div className="socials-cards__card">
-                <i className="ph-bold ph-dribbble-logo" />
+                linkden
+                <br />
+                <FaLinkedin />
                 <a
                   className="socials-cards__link"
                   href="https://dribbble.com/"
@@ -131,21 +169,12 @@ const Contact = () => {
                 />
               </div>
             </div>
-            {/* socials item */}
+
             <div className="socials-cards__item d-flex grid-item-s animate-card-5">
               <div className="socials-cards__card">
-                <i className="ph-bold ph-behance-logo" />
-                <a
-                  className="socials-cards__link"
-                  href="https://www.behance.net/"
-                  target="_blank"
-                />
-              </div>
-            </div>
-            {/* socials item */}
-            <div className="socials-cards__item d-flex grid-item-s animate-card-5">
-              <div className="socials-cards__card">
-                <i className="ph-bold ph-instagram-logo" />
+                github
+                <br />
+                <FaGithub />{" "}
                 <a
                   className="socials-cards__link"
                   href="https://www.instagram.com/"
@@ -153,10 +182,11 @@ const Contact = () => {
                 />
               </div>
             </div>
-            {/* socials item */}
             <div className="socials-cards__item d-flex grid-item-s animate-card-5">
               <div className="socials-cards__card">
-                <i className="ph-bold ph-twitch-logo" />
+                gmail
+                <br />
+                <SiGmail />
                 <a
                   className="socials-cards__link"
                   href="https://www.twitch.tv/"
@@ -167,7 +197,9 @@ const Contact = () => {
             {/* socials item */}
             <div className="socials-cards__item d-flex grid-item-s animate-card-5">
               <div className="socials-cards__card">
-                <i className="ph-bold ph-pinterest-logo" />
+                whatsap
+                <br />
+                <RiWhatsappFill />
                 <a
                   className="socials-cards__link"
                   href="https://www.pinterest.com/"
@@ -201,14 +233,14 @@ const Contact = () => {
             <div className="row g-0 contact-lines__item">
               {/* data item */}
               <div className="col-12 col-md-4 contact-lines__data">
-                <p className="contact-lines__title animate-in-up">Location</p>
+                <p className="contact-lines__title animate-in-up">git</p>
                 <p className="contact-lines__text animate-in-up">
                   <a
                     className="text-link-bold"
-                    href="https://maps.app.goo.gl/xMJXTEUeHkv6kYRQ6"
+                    href="https://github.com/hamzaerrhh"
                     target="_blank"
                   >
-                    Odesa, Ukraine
+                    hamzaerrhh
                   </a>
                 </p>
               </div>
@@ -217,7 +249,7 @@ const Contact = () => {
                 <p className="contact-lines__title animate-in-up">Phone</p>
                 <p className="contact-lines__text animate-in-up">
                   <a className="text-link-bold" href="tel:+12127089400">
-                    +1 212-708-9400
+                    +212704828301
                   </a>
                 </p>
               </div>
@@ -227,9 +259,9 @@ const Contact = () => {
                 <p className="contact-lines__text animate-in-up">
                   <a
                     className="text-link-bold"
-                    href="mailto:example@example.com?subject=Message%20from%20your%20site"
+                    href="mailto:hmzaeer@gmail.com?subject=Message%20from%20your%20site"
                   >
-                    hello@alexwalker.com
+                    hmzaeer@gmail.com
                   </a>
                 </p>
               </div>

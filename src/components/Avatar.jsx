@@ -64,7 +64,7 @@ const Avatar = () => {
               <li className="socials-square__item">
                 <a
                   className="socials-square__link "
-                  href="https://ma.linkedin.com/in/hamza-errabbane-5ba243273"
+                  href="malito:hmzaeer@gmail.com"
                   target="_blank"
                 >
                   <SiGmail size={24} />

@@ -18,7 +18,6 @@ const PageContent = () => {
         <Resume />
 
         <Contact />
-        {/* Contact Section End */}
       </div>
     </div>
   );

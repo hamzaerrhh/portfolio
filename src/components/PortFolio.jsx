@@ -1,6 +1,8 @@
 import dash from "../assets/dash.jpg";
 import appoinement from "../assets/apoinement.jpg";
 import smart from "../assets/smart.jpg";
+import landing from "../assets/gem.jpg";
+
 // import StarsCanvas from "../tshirt/StarCanvas";
 const PortFolio = () => {
   return (
@@ -53,7 +55,7 @@ const PortFolio = () => {
                     </p>
                   </div>
                   <div className="cards__image d-flex">
-                    <img src={dash} />{" "}
+                    <img src={landing} />{" "}
                   </div>
                   s
                 </div>

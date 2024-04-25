@@ -53,7 +53,7 @@ const Home = () => {
           </div>
         </div>
         <div className="spline_style">
-          {/* <Spline scene="https://prod.spline.design/tSH32vPhaA4IN5ic/scene.splinecode" /> */}
+          <Spline scene="https://prod.spline.design/tSH32vPhaA4IN5ic/scene.splinecode" />
         </div>
 
         {/* Headline End */}
