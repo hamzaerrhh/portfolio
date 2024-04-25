@@ -3043,6 +3043,16 @@ form textarea:required:valid {
 
 @media only screen and (min-width: 768px) {
   .header {
+    background: #fff;
+    left: 45%;
+
+    bottom: 3rem;
+  }
+}
+@media only screen and (min-width: 478) {
+  .header {
+    left: 45%;
+
     bottom: 3rem;
   }
 }
